@@ -44,19 +44,3 @@ func New(resourcelimit int) *Executor {
 		sem: make(chan struct{}, resourcelimit),
 	}
 }
-
-// func main() {
-// 	executor := throttle.New(runtime.NumCPU())
-
-// 	start := time.Now()
-
-// 	for i := 1; i < 100; i++ {
-// 		executor.Run(func() {
-// 			time.Sleep(1 * time.Second)
-// 		})
-// 	}
-
-// 	executor.Wait()
-
-// 	fmt.Printf("Finished in %s\n", time.Since(start))
-// }
