@@ -36,7 +36,7 @@ func (q *Executor) Run(f func()) {
 
 // New creates a new Executor that is ready to be used.
 func New(resourcelimit int) *Executor {
-	if int < 1 {
+	if resourcelimit < 1 {
 		resourcelimit = 1
 	}
 
