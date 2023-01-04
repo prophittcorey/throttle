@@ -16,6 +16,7 @@ type Executor struct {
 	sem chan struct{}
 }
 
+// Run executes a function and ensures concurrency is throttled.
 func (q *Executor) Run(f func()) {
 	q.sem <- struct{}{}
 	q.Add(1)
