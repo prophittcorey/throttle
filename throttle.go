@@ -30,6 +30,10 @@ func (q *Executor) Run(f func()) {
 }
 
 func New(resourcelimit int) *Executor {
+	if int < 1 {
+		resourcelimit = 1
+	}
+
 	return &Executor{
 		sem: make(chan struct{}, resourcelimit),
 	}
