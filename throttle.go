@@ -1,3 +1,5 @@
+// Package throttle implements a data structure to help limit concurrency
+// around a fixed resource limit without excessive blocking.
 package throttle
 
 import (
@@ -6,6 +8,9 @@ import (
 	"sync"
 )
 
+// Executor is the monitor for executing functions. The executor will ensure
+// only a fixed number of functions are fun concurrently and will block as
+// needed.
 type Executor struct {
 	sync.WaitGroup
 	sem chan struct{}
@@ -29,6 +34,7 @@ func (q *Executor) Run(f func()) {
 	})()
 }
 
+// New creates a new Executor that is ready to be used.
 func New(resourcelimit int) *Executor {
 	if int < 1 {
 		resourcelimit = 1
